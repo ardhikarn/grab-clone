@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+import { theme } from './config/vuetify.options'
+import languages from './static/lang/languages'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -17,14 +19,26 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' },
+      { rel: 'stylesheet', href: 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' }
+    ],
+    
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '~/assets/vuetify-overide.scss'
+  ],
+
+  loading: { color: theme.primary },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '~plugins/i18n-config.js' },
+    { src: '~/plugins/vue-scroll-nav', ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,25 +50,52 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'default',
+        breakpoints: {
+          xsDown: 599,
+          xsUp: 600,
+          smDown: 992,
+          smUp: 991,
+          mdDown: 1279,
+          mdUp: 1280,
+          lgDown: 1919,
+          lgUp: 1920,
+          xl: Infinity
+        }
+      }
+    ],
+    [
+      'nuxt-i18n',
+      {
+        // Options
+        //to make it seo friendly remove below line and add baseUrl option to production domain
+        seo: false,
+        // baseUrl: 'https://my-nuxt-app.com',
+        lazy: true,
+        locales: languages,
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+        },
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          alwaysRedirect: true
+        },
+        langDir: 'static/lang/'
+      }
+    ]
+  ],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
-    },
+    customVariables: ['~/assets/styles.scss'],
+    optionsPath: './config/vuetify.options.js'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
