@@ -1,11 +1,12 @@
 .root {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background-color: #fff;
-  margin: 0 auto !important;
+  margin-top: 30px;
+  // position: fixed;
+  // width: 100%;
+  // top: 0;
+  // background-color: #fff;
+  // margin: 0 auto !important;
   padding: 0 20px;
-  z-index: 2;
+  // z-index: 2;
   .container {
     #main-wrap & {
       max-width: 1200px
@@ -18,7 +19,7 @@
 
 .menu-section {
   background-color: #F7F7F7;
-  margin-top: 40px;
+  // margin-top: 40px;
   padding: 30px 25px;
 }
 
