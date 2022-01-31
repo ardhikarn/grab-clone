@@ -1,0 +1,89 @@
+.root {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #fff;
+  margin: 0 auto !important;
+  padding: 0 20px;
+  z-index: 2;
+  .container {
+    #main-wrap & {
+      max-width: 1200px
+    }
+  }
+  @include breakpoints-down(xs) {
+    margin-bottom: $spacing10
+  }
+}
+
+.menu-section {
+  background-color: #F7F7F7;
+  margin-top: 40px;
+  padding: 30px 25px;
+}
+
+.carousel-wrap {
+  position: relative;
+}
+
+.menus {
+  margin-top: 40px;
+}
+
+.my-nav {
+  padding: 0px 24px;
+}
+
+.item {
+  padding: 14px 0;
+  a {
+    text-decoration: none;
+    span {
+      color: #000;
+      &.active {
+        color: #00B14F;
+      }
+    }
+  }
+  &:focus {
+    outline: none
+  }
+  &.active {
+    color: #00B14F !important;
+    border-bottom: 2px solid #00B14F;
+  }
+
+  
+}
+
+.nav {
+  // @include palette-background-paper;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  top: calc(50% - 15px);
+  z-index: 90;
+  
+  i {
+    vertical-align: middle;
+  }
+}
+
+.prev {
+  left: $spacing5 * -1
+}
+.next {
+  right: $spacing5 * -1
+}
+
+
+.card {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
